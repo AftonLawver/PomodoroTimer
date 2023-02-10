@@ -1,0 +1,24 @@
+{
+  "name": "pomodorotimer",
+  "productName": "Study Time Tracker",
+  "version": "1.0.0",
+  "description": "App to track study time",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AftonLawver/PomodoroTimer.git"
+  },
+  "author": "Afton Lawver",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AftonLawver/PomodoroTimer/issues"
+  },
+  "homepage": "https://github.com/AftonLawver/PomodoroTimer#readme",
+  "dependencies": {
+    "electron": "^23.0.0",
+    "toastify-js": "^1.12.0"
+  }
+}
