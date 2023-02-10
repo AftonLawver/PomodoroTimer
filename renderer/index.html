@@ -13,26 +13,27 @@
     <title>Pomodoro Timer</title>
   </head>
   <body>
-      <div class="greeting_date_time">
-          <img src="images/logo.svg" width="32" />
+      <div class="logo">
+          <img id="logo" src="images/logo.svg" width="32" />
+      </div>
+      <br>
+      <div class="greeting_and_date">
           <span id="greeting"></span>
           <span id="name">Afton.</span>
         <span id="date"></span>
-        <span id="time"></span>
       </div>
-
+        <br>
+      <div class="time">
+          <span id="time"></span>
+      </div>
       <br>
-      <br>
-
       <div class="study_time">
-        <span class="study_for_how_long">How long would you like to study for?</span>
+        <span id="label1">Select your study time below</span>
       </div>
-
       <br>
-
       <div class="buttons">
-        <button type="25_minutes_button">25 minutes</button>
-        <button type="50_minutes_button">50 minutes</button>
+        <button onclick="timeButtonClicked()" id="25_minute_button" class="time_button" type="button">25 minutes</button>
+        <button onclick="timeButtonClicked()" id="50_minute_button" class="time_button" type="button">50 minutes</button>
       </div>
   </body>
 </html>
