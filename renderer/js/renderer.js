@@ -1,3 +1,5 @@
+import ProgressBar from "progressbar.js";
+
 window.onload = displayClock();
 
 let date = new Date().toDateString();
@@ -13,7 +15,7 @@ function displayClock() {
 
 if (time.charAt(time.length-2) === 'P') {
     let hour = new Date().getHours();
-    if (hour >= 5) {
+    if (hour >= 16) {
         document.getElementById('greeting').innerHTML = "Good Evening, ";
     }
     else {
@@ -36,5 +38,6 @@ button2.onclick = function() {
     document.getElementById("label1").remove();
     document.getElementById("25_minute_button").remove();
     document.getElementById("50_minute_button").remove();
-}
+    // showTimer();
 
+}

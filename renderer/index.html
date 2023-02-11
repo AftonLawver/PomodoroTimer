@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/renderer.js" defer></script>
-    <title>Pomodoro Timer</title>
+      <script src="js/renderer.js" defer></script>
+      <title>Pomodoro Timer</title>
   </head>
   <body>
       <div class="logo">
@@ -31,9 +31,9 @@
         <span id="label1">Select your study time below</span>
       </div>
       <br>
-      <div class="buttons">
-        <button onclick="timeButtonClicked()" id="25_minute_button" class="time_button" type="button">25 minutes</button>
-        <button onclick="timeButtonClicked()" id="50_minute_button" class="time_button" type="button">50 minutes</button>
+      <div id="buttons" class="buttons">
+        <button  id="25_minute_button" class="time_button" type="button">25 minutes</button>
+        <button id="50_minute_button" class="time_button" type="button">50 minutes</button>
       </div>
   </body>
 </html>
