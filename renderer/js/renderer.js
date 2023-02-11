@@ -1,5 +1,3 @@
-import ProgressBar from "progressbar.js";
-
 window.onload = displayClock();
 
 let date = new Date().toDateString();
@@ -26,18 +24,34 @@ else {
     document.getElementById('greeting').innerHTML = "Good Morning, ";
 }
 
-let button1 = document.getElementById("25_minute_button");
-let button2 = document.getElementById("50_minute_button");
-button1.onclick = function() {
+let button25Minutes = document.getElementById("25_minute_button");
+let button50Minutes = document.getElementById("50_minute_button");
+button25Minutes.onclick = function() {
     document.getElementById("label1").remove();
     document.getElementById("25_minute_button").remove();
     document.getElementById("50_minute_button").remove();
+    document.getElementById("progressBar").style.visibility = "visible";
+    progress(1500, 1500, $('#progressBar'));
 }
 
-button2.onclick = function() {
+button50Minutes.onclick = function() {
     document.getElementById("label1").remove();
     document.getElementById("25_minute_button").remove();
     document.getElementById("50_minute_button").remove();
-    // showTimer();
+    document.getElementById("progressBar").style.visibility = "visible";
+    progress(3000, 3000, $('#progressBar'));
 
 }
+
+function progress(timeleft, timetotal, $element) {
+    const progressBarWidth = timeleft * $element.width() / timetotal;
+    $element.find('div').animate({ width: progressBarWidth }, 300).html(Math.floor(timeleft/60) + ":"+ (timeleft%60));
+
+    if(timeleft > 0) {
+        setTimeout(function() {
+            progress(timeleft - 1, timetotal, $element);
+        }, 1000);
+    }
+};
+
+

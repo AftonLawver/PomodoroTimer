@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AftonLawver/PomodoroTimer#readme",
   "dependencies": {
     "electron": "^23.0.0",
+    "jquery": "^3.6.3",
     "progressbar.js": "^1.1.0",
     "toastify-js": "^1.12.0"
   },

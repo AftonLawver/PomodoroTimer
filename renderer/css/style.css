@@ -31,15 +31,13 @@ html {
 }
 
 
-
-   /* CSS */
 .time_button {
    appearance: none;
    backface-visibility: hidden;
-   background-color: #d3c900;
+   background-color: #ffd433;
    border-radius: 8px;
    border-style: none;
-   box-shadow: rgb(187, 165, 0) 0 4px 9px;
+   box-shadow: rgb(218, 180, 38) 0 4px 9px;
    box-sizing: border-box;
    color: #030303;
    cursor: pointer;
@@ -65,7 +63,7 @@ html {
 }
 
 .time_button:hover {
-    background-color: #bba500;
+    background-color: #f8d655;
     opacity: 1;
     transform: translateY(0);
     transition-duration: .35s;
@@ -80,7 +78,22 @@ html {
     box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
 }
 
+#progressBar {
+    width: 75%;
+    margin: 10px auto;
+    height: 22px;
+    background-color: #100f08;
+    visibility: hidden;
+}
 
-
+#progressBar div {
+    height: 100%;
+    text-align: right;
+    padding: 0 10px;
+    line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+    width: 0;
+    background-color: #ffd433;
+    box-sizing: border-box;
+}
 
 
