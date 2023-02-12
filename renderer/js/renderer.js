@@ -45,7 +45,12 @@ button50Minutes.onclick = function() {
 
 function progress(timeleft, timetotal, $element) {
     const progressBarWidth = timeleft * $element.width() / timetotal;
-    $element.find('div').animate({ width: progressBarWidth }, 300).html(Math.floor(timeleft/60) + ":"+ (timeleft%60));
+    let seconds = timeleft%60;
+    const secondsAsString = seconds.toString();
+    if(secondsAsString.length === 1) {
+        seconds = '0' + seconds;
+    }
+    $element.find('div').animate({ width: progressBarWidth }, 300).html(Math.floor(timeleft/60) + ":" + seconds);
 
     if(timeleft > 0) {
         setTimeout(function() {
