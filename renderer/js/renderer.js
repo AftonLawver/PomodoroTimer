@@ -31,7 +31,7 @@ button25Minutes.onclick = function() {
     document.getElementById("25_minute_button").remove();
     document.getElementById("50_minute_button").remove();
     document.getElementById("progressBar").style.visibility = "visible";
-    progress(1500, 1500, $('#progressBar'));
+    progress(10, 10, $('#progressBar'));
 }
 
 button50Minutes.onclick = function() {
@@ -57,6 +57,14 @@ function progress(timeleft, timetotal, $element) {
             progress(timeleft - 1, timetotal, $element);
         }, 1000);
     }
+    else {
+        document.getElementById('alarm').play();
+    }
 };
+
+function replaceProgressBar() {
+    const timer = document.getElementById('progressBar');
+    const breakQuestion = document.createElement('div');
+}
 
 
