@@ -18,7 +18,7 @@ html {
     padding-left: 20px;
 }
 
-.study_time {
+#spot1 {
     text-align: center;
 }
 
@@ -31,7 +31,7 @@ html {
 }
 
 
-.time_button {
+.time_button, .control_button {
    appearance: none;
    backface-visibility: hidden;
    background-color: #ffd433;
@@ -62,20 +62,18 @@ html {
    white-space: nowrap;
 }
 
-.time_button:hover {
+.time_button:hover, .control_button:hover {
     background-color: #f8d655;
     opacity: 1;
     transform: translateY(0);
     transition-duration: .35s;
+    box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+
 }
 
-.time_button:active {
+.time_button:active, .control_button:active {
     transform: translateY(2px);
     transition-duration: .35s;
-}
-
-.time_button:hover {
-    box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
 }
 
 #progressBar {
@@ -83,7 +81,8 @@ html {
     margin: 10px auto;
     height: 22px;
     background-color: #100f08;
-    visibility: hidden;
+    display:none;
+
 }
 
 #progressBar div {
@@ -95,5 +94,11 @@ html {
     background-color: #ffd433;
     box-sizing: border-box;
 }
+
+.control_button {
+    display: none;
+}
+
+
 
 
