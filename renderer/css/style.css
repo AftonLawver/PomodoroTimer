@@ -18,7 +18,7 @@ html {
     padding-left: 20px;
 }
 
-#spot1 {
+#spot1, #spot2, #spot3 {
     text-align: center;
 }
 
@@ -31,7 +31,7 @@ html {
 }
 
 
-.time_button, .control_button {
+.time_button, .control_button, .break_button, .start_session {
    appearance: none;
    backface-visibility: hidden;
    background-color: #ffd433;
@@ -62,7 +62,7 @@ html {
    white-space: nowrap;
 }
 
-.time_button:hover, .control_button:hover {
+.time_button:hover, .control_button:hover, .break_button:hover, .start_session {
     background-color: #f8d655;
     opacity: 1;
     transform: translateY(0);
@@ -71,7 +71,7 @@ html {
 
 }
 
-.time_button:active, .control_button:active {
+.time_button:active, .control_button:active, .break_button:active, .start_session {
     transform: translateY(2px);
     transition-duration: .35s;
 }
@@ -95,9 +95,15 @@ html {
     box-sizing: border-box;
 }
 
-.control_button {
+.control_button, .break_button {
     display: none;
 }
+
+#label2, #study_again_button, #label3 {
+    display: none;
+}
+
+
 
 
 

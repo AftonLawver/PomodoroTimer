@@ -1,5 +1,8 @@
 window.onload = displayClock();
-
+const minutes_in_seconds_25 = 10;
+const minutes_in_seconds_50 = 3000;
+const minutes_in_seconds_5 = 5;
+const minutes_in_seconds_10 = 600;
 let date = new Date().toDateString();
 document.getElementById('date').innerHTML = date;
 let time = new Date().toLocaleTimeString();
@@ -23,16 +26,16 @@ else {
     document.getElementById('greeting').innerHTML = "Good Morning, ";
 }
 
-let button25Minutes = document.getElementById("25_minute_button");
-let button50Minutes = document.getElementById("50_minute_button");
-button25Minutes.onclick = function() {
-    switchButtons()
-    progress(10, 10, $('#progressBar'));
+const button25Minutes = document.getElementById("25_minute_button");
+const button50Minutes = document.getElementById("50_minute_button");
+button25Minutes.onclick = ()=> {
+    switchButtons();
+    progress(minutes_in_seconds_25, minutes_in_seconds_25, $('#progressBar'));
 }
 
-button50Minutes.onclick = function() {
+button50Minutes.onclick = ()=> {
     switchButtons();
-    progress(3000, 3000, $('#progressBar'));
+    progress(minutes_in_seconds_50, minutes_in_seconds_50, $('#progressBar'));
 }
 
 function progress(timeleft, timetotal, $element) {
@@ -45,12 +48,12 @@ function progress(timeleft, timetotal, $element) {
     $element.find('div').animate({ width: progressBarWidth }, 300).html(Math.floor(timeleft/60) + ":" + seconds);
 
     if(timeleft > 0) {
-        document.getElementById('stop_button').onclick = function() {
+        document.getElementById('stop_button').onclick = ()=> {
             setBackToMain();
             clearTimeout(timeoutId);
             return;
         };
-        document.getElementById('pause_button').onclick = function() {
+        document.getElementById('pause_button').onclick = ()=> {
             document.getElementById("pause_button").style.display = 'none';
             document.getElementById("start_button").style.display = 'inline';
             clearTimeout(timeoutId);
@@ -65,10 +68,93 @@ function progress(timeleft, timetotal, $element) {
         }, 1000);
     }
     else {
-        document.getElementById('alarm').play();
-
+        let soundPlayer = new Audio("/PomodoroTimer/renderer/sounds/alarm.mp3")
+        soundPlayer.currentTime = 0;
+        const intervalId = setInterval(()=> {
+            soundPlayer.play();
+        }, 500);
+        if(timetotal === minutes_in_seconds_25) {
+            studySessionEnded();
+            document.getElementById('5_minute_break_button').style.display = 'inline';
+            document.getElementById('number_of_minutes').style.display = 'inline';
+            document.getElementById('number_of_minutes').innerText = " 25 minutes!";
+            document.getElementById('5_minute_break_button').onclick = ()=> {
+                soundPlayer.pause();
+                clearInterval(intervalId);
+                progress(minutes_in_seconds_5, minutes_in_seconds_5, $('#progressBar'));
+                breakTime();
+            }
+            document.getElementById('done_studying_button').onclick = ()=> {
+                soundPlayer.pause();
+                clearInterval(intervalId);
+                setBackToMain();
+            }
+        }
+        // 10 minute break or 5 minute break ended
+        else if(timetotal === minutes_in_seconds_10 || timetotal === minutes_in_seconds_5) {
+            breakEnded();
+            document.getElementById('study_again_button').onclick = ()=> {
+                soundPlayer.pause();
+                clearInterval(intervalId);
+                setBackToMain();
+            }
+            document.getElementById('done_studying_button').onclick = ()=> {
+                soundPlayer.pause();
+                clearInterval(intervalId);
+                setBackToMain();
+            }
+        }
+        // We are in 50 minute study session
+        else {
+            studySessionEnded();
+            document.getElementById('10_minute_break_button').style.display = 'inline';
+            document.getElementById('number_of_minutes').style.display = 'inline';
+            document.getElementById('number_of_minutes').innerText = " 50 minutes!";
+            document.getElementById('10_minute_break_button').onclick = ()=> {
+                soundPlayer.pause();
+                clearInterval(intervalId);
+                progress(minutes_in_seconds_10, minutes_in_seconds_10, $('#progressBar'));
+                breakTime();
+            }
+            document.getElementById('done_studying_button').onclick = ()=> {
+                soundPlayer.pause();
+                clearInterval(intervalId);
+                setBackToMain();
+            }
+        }
     }
 };
+
+function studySessionEnded() {
+    document.getElementById('label2').style.display = "inline";
+    document.getElementById('done_studying_button').style.display = 'inline';
+    document.getElementById("progressBar").style.display = 'none';
+    document.getElementById('pause_button').style.display = 'none';
+    document.getElementById('stop_button').style.display = 'none';
+}
+
+function breakEnded() {
+    document.getElementById('label2').style.display = "none";
+    document.getElementById('label3').style.display = "inline";
+    document.getElementById('study_again_button').style.display = 'inline';
+    document.getElementById('done_studying_button').style.display = 'inline';
+    document.getElementById('number_of_minutes').style.display = 'none';
+    document.getElementById('stop_button').style.display = 'none';
+    document.getElementById('pause_button').style.display = 'none';
+    document.getElementById('progressBar').style.display = 'none';
+
+}
+
+function breakTime() {
+    document.getElementById('progressBar').style.display = 'block';
+    document.getElementById('5_minute_break_button').style.display = 'none';
+    document.getElementById('10_minute_break_button').style.display = 'none';
+    document.getElementById('label2').style.display = 'none';
+    document.getElementById('number_of_minutes').style.display = 'none';
+    document.getElementById('done_studying_button').style.display = 'none';
+    document.getElementById('stop_button').style.display = 'inline';
+    document.getElementById('pause_button').style.display = 'inline';
+}
 
 function switchButtons() {
     document.getElementById("spot1").style.display = 'none';
@@ -87,26 +173,12 @@ function setBackToMain() {
     document.getElementById("pause_button").style.display = 'none';
     document.getElementById("progressBar").style.display = 'none';
     document.getElementById("start_button").style.display = 'none';
-
-}
-
-class Timeout {
-    constructor(callbackFunction, time) {
-        this.time = time;
-        this.callback = callbackFunction;
-        this.run(); // It will be automatically invoked when the constructor is run
-    }
-    run() {
-        this.startedTime = new Date().getTime();
-        if (this.time > 0) {
-            this.timeout = setTimeout(this.callback, this.time); // Timeout must be set if this.time is greater than 0
-        }
-    }
-    pause() {
-        let currentTime = new Date().getTime();
-        this.time = this.time - (currentTime - this.startedTime); // The time that was given when initializing the timeout is subtracted from the amount of time spent
-        clearTimeout(this.timeout);
-    }
+    document.getElementById("5_minute_break_button").style.display = 'none';
+    document.getElementById("10_minute_break_button").style.display = 'none';
+    document.getElementById("done_studying_button").style.display = 'none';
+    document.getElementById("label2").style.display = 'none';
+    document.getElementById('study_again_button').style.display = 'none';
+    document.getElementById('label3').style.display = 'none';
 }
 
 
