@@ -1,5 +1,6 @@
 // main process = backend
 // renderer process = frontend
+
 const path = require('path');
 const { app, BrowserWindow, Menu } = require('electron');
 
@@ -8,9 +9,15 @@ const isMac = process.platform === 'darwin';
 
 function createMainWindow() {
     const mainWindow = new BrowserWindow({
-        title: 'Pomodoro Timer',
-        width: isDev ? 600 : 400,
-        height: 300
+        webPreferences: {
+            title: 'Pomodoro Timer',
+            width: isDev ? 600 : 400,
+            height: 300,
+            preload: path.join(__dirname, 'preload.js'),
+            nodeIntegration: false,
+            contextIsolation: true,
+            sandbox: false,
+        },
     });
 
     // Open devtools if in dev env
@@ -22,6 +29,7 @@ function createMainWindow() {
 }
 
 // App is ready
+
 app.whenReady().then(() => {
     createMainWindow();
 

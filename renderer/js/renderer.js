@@ -68,7 +68,18 @@ function progress(timeleft, timetotal, $element) {
         }, 1000);
     }
     else {
-        let soundPlayer = new Audio("/PomodoroTimer/renderer/sounds/alarm.mp3")
+
+        // connect to DB
+        const connection = mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: '102992',
+            database: 'pomodoro_timer'
+        });
+
+        connection.connect();
+
+        let soundPlayer = new Audio("./sounds/alarm.mp3")
         soundPlayer.currentTime = 0;
         const intervalId = setInterval(()=> {
             soundPlayer.play();
@@ -180,6 +191,8 @@ function setBackToMain() {
     document.getElementById('study_again_button').style.display = 'none';
     document.getElementById('label3').style.display = 'none';
 }
+
+
 
 
 
