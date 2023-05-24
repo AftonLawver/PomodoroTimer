@@ -70,14 +70,22 @@ function progress(timeleft, timetotal, $element) {
     else {
 
         // connect to DB
-        const connection = mysql.createConnection({
+        /*mysql.createConnection({
             host: 'localhost',
             user: 'root',
             password: '102992',
             database: 'pomodoro_timer'
         });
 
-        connection.connect();
+        const func = async () => {
+            const response = await window.mysql.ping();
+            console.log(response);
+        }
+
+        func();
+
+        // mysql.connect();
+        console.log("Successfully connected to database.");*/
 
         let soundPlayer = new Audio("./sounds/alarm.mp3")
         soundPlayer.currentTime = 0;
