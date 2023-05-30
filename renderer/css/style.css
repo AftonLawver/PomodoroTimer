@@ -1,6 +1,109 @@
-html {
-    background-color: slategray;
-    font-family: 'JetBrains Mono'; font-size: 16px;
+html, body {
+    margin:0;
+    padding: 0;
+    font-family: 'JetBrains Mono';
+    font-size: 16px;
+    color: #949AA7;
+    background-color: #2C313C;
+}
+
+.mainApp {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 3%;
+    -webkit-box-sizing: border-box;
+}
+
+.mainApp > .topBar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    border-bottom: 3px solid #343B48; /* possibly change this color */
+    background-color: #1B1D23;
+    -webkit-user-select: none;
+}
+
+.topBar > .titleBar {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%
+}
+
+.titleBar > .toggleButton {
+    width: 45px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    transition: 0.2s;
+    cursor: pointer;
+    color: #949AA7;
+}
+
+.titleBar > .toggleButton:hover{
+    background-color: #272C36;
+}
+
+.titleBar > .toggleButton:active{
+    background-color: #4F9FEE;
+}
+
+.titleBar > .title {
+    margin-left: 10px;
+    width: 100%;
+    line-height: 30px;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    -webkit-app-region: drag;
+}
+
+.topBar > .titleBarBtns {
+    display: flex;
+    flex-direction: row;
+    width: 120px;
+    height: 40px;
+}
+
+.titleBarBtns > .topBtn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer;
+    color: #949AA7;
+
+}
+
+.titleBarBtns > .topBtn:hover {
+    background-color: #272C36;
+}
+
+.titleBarBtns > .minimizeBtn {
+    padding-bottom: 13px;
+}
+
+body > .contentArea {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.contentArea > .contentPages {
+    width: 100%;
+    height: 100%;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
 }
 
 .time {
@@ -9,6 +112,7 @@ html {
 }
 
 .greeting_and_date {
+    padding-top: 2%;
     text-align: center;
 }
 
@@ -23,42 +127,38 @@ html {
 
 .buttons {
     text-align: center;
+    padding-bottom: 2%;
 }
-
-#logo {
-    justify-content: left;
-}
-
 
 .time_button, .control_button, .break_button, .start_session {
-   appearance: none;
-   backface-visibility: hidden;
-   background-color: #ffd433;
-   border-radius: 8px;
-   border-style: none;
-   box-shadow: rgb(218, 180, 38) 0 4px 9px;
-   box-sizing: border-box;
-   color: #030303;
-   cursor: pointer;
-   display: inline-block;
-   font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
-   font-size: 16px;
-   font-weight: 600;
-   letter-spacing: normal;
-   line-height: 1.0;
-   outline: none;
-   overflow: hidden;
-   padding: 13px 20px;
-   position: relative;
-   text-align: center;
-   text-decoration: none;
-   transform: translate3d(0, 0, 0);
-   transition: all .3s;
-   user-select: none;
-   -webkit-user-select: none;
-   touch-action: manipulation;
-   vertical-align: top;
-   white-space: nowrap;
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #f8cc1d;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgb(218, 180, 38) 0 4px 9px;
+    box-sizing: border-box;
+    color: #030303;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.0;
+    outline: none;
+    overflow: hidden;
+    padding: 13px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
 }
 
 .time_button:hover, .control_button:hover, .break_button:hover, .start_session {
@@ -81,7 +181,6 @@ html {
     height: 22px;
     background-color: #100f08;
     display:none;
-
 }
 
 #progressBar div {
@@ -101,6 +200,8 @@ html {
 #label2, #study_again_button, #label3 {
     display: none;
 }
+
+
 
 
 
