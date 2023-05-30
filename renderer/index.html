@@ -1,58 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' "/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
-    <link rel="stylesheet" href="css/style.css" />
-      <script src="js/jquery-3.6.3.js"></script>
-      <script src="js/renderer.js" defer></script>
-      <title>Pomodoro Timer</title>
-  </head>
-  <body>
-      <div class="logo">
-          <img id="logo" src="images/logo.svg" width="32" />
-      </div>
-      <div class="greeting_and_date">
-          <span id="greeting"></span>
-          <span id="name">Afton.</span>
-        <span id="date"></span>
-      </div>
-        <br>
-      <div class="time">
-          <span id="time"></span>
-      </div>
-      <br>
-      <div id="spot1">
-        <span id="label1">Select your study time below</span>
-      </div>
-      <div id="spot2">
-          <span id="label2">You have finished your study session of <span id="number_of_minutes"></span></span>
-      </div>
-      <div id="spot3">
-          <span id="label3">Break is over</span>
-      </div>
-      <br>
-      <div id="buttons" class="buttons">
-        <button  id="25_minute_button" class="time_button" type="button">25 minutes</button>
-        <button id="50_minute_button" class="time_button" type="button">50 minutes</button>
-          <button id="start_button" class="control_button" type="button">Start</button>
-          <button id="pause_button" class="control_button" type="button">Pause</button>
-          <button  id="stop_button" class="control_button" type="button">Stop</button>
-
-          <button id="5_minute_break_button" class="break_button" type="button">5 minute break</button>
-          <button id="10_minute_break_button" class="break_button" type="button">10 minute break</button>
-          <button  id="done_studying_button" class="break_button" type="button">I'm done studying</button>
-          <button  id="study_again_button" class="start_session" type="button">Start another study session</button>
-      </div>
-      <div id="progressBar">
-          <div class="bar"></div>
-          <audio id="alarm" src="sounds/alarm.mp3" preload="auto"></audio>
-      </div>
-
-  </body>
+    <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="js/renderer.js" defer></script>
+</head>
+<body>
+<div class="mainApp">
+    <div class="topBar">
+        <div class="titleBar">
+            <button id="showHideMenus" class="toggleButton"><i class="fa-solid fa-bars fa-xl"></i></button>
+            <img src="../assets/icons/png/icon.png" width="25px" height="25px">
+            <div class="title">
+                Pomodoro Timer
+            </div>
+        </div>
+        <div class="titleBarBtns">
+            <button id="minimizeBtn" class="topBtn minimizeBtn" title="Minimize"><i class="fa-solid fa-window-minimize fa-xl"></i></button>
+            <button id="maxResBtn" class="topBtn maximizeBtn" title="Maximize"><i id="fontIconMaxResBtn" class="fa-regular fa-square fa-xl"></i></button>
+            <button id="closeBtn" class="topBtn closeBtn" title="Close"><i class="fa-solid fa-xmark fa-xl"></i></button>
+        </div>
+    </div>
+    <div class="contentArea">
+        <div class="contentPages">
+            <div class="greeting_and_date">
+                <span id="greeting"></span>
+                <span id="name">Afton.</span>
+                <div id="date"></div>
+            </div>
+            <br>
+            <div class="time">
+                <span id="time"></span>
+            </div>
+            <div id="spot1">
+                <span id="label1">Select your study time below</span>
+            </div>
+            <div id="spot2">
+                <span id="label2">You have finished your study session of <span id="number_of_minutes"></span></span>
+            </div>
+            <div id="spot3">
+                <span id="label3">Break is over</span>
+            </div>
+            <br>
+            <div id="buttons" class="buttons">
+                <button  id="25_minute_button" class="time_button" type="button">25 minutes</button>
+                <button id="50_minute_button" class="time_button" type="button">50 minutes</button>
+                <button id="start_button" class="control_button" type="button">Start</button>
+                <button id="pause_button" class="control_button" type="button">Pause</button>
+                <button  id="stop_button" class="control_button" type="button">Stop</button>
+                <button id="5_minute_break_button" class="break_button" type="button">5 minute break</button>
+                <button id="10_minute_break_button" class="break_button" type="button">10 minute break</button>
+                <button  id="done_studying_button" class="break_button" type="button">I'm done studying</button>
+                <button  id="study_again_button" class="start_session" type="button">Start another study session</button>
+            </div>
+            <div id="progressBar">
+                <div class="bar"></div>
+                <audio id="alarm" src="sounds/alarm.mp3" preload="auto"></audio>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>
+
