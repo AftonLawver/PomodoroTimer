@@ -34,7 +34,7 @@ function createMainWindow() {
     //     mainWindow.webContents.openDevTools();
     // }
 
-    mainWindow.loadFile(path.join(__dirname, './renderer/index.html'));
+    mainWindow.loadFile(path.join(__dirname, './renderer/mainWindow.html'));
 }
 
 // App is ready
