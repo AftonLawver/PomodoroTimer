@@ -1,8 +1,7 @@
 // main process = backend
 // renderer process = frontend
-
-const path = require('path');
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron')
+const path = require('path')
 
 // process.env.NODE_ENV = 'production';
 
@@ -20,51 +19,53 @@ function createMainWindow() {
         // minWidth: 450,
         // maxWidth: 450,
         frame: false,
-        preload: path.join(__dirname, 'preload.js'),
         webPreferences: {
-            nodeIntegration: true,
-            sandbox: false,
-
-            //This is the statement that gives me problems.
-            // By changing contextIsolation: false it renders the jquery inaccessible
+            preload: path.join(__dirname, 'preload.js'),
+            nodeIntegration: false,
             contextIsolation: true,
-
-
-
         },
     });
+
+    // MINIMIZE APP
+    ipcMain.on('minimize', (event, title) => {
+        mainWindow.minimize();
+    })
+
+    // CLOSE APP
+    ipcMain.on('close', ()=> {
+        mainWindow.close();
+    })
+
+    // MAXIMIZE APP
+    ipcMain.on('maximizeRestoreApp', ()=> {
+        if (mainWindow.isMaximized()) {
+            console.log("clicked on restore.");
+            mainWindow.restore();
+        }
+        else {
+            console.log("clicked on maximize.")
+            mainWindow.maximize();
+        }
+    })
+
+    mainWindow.on('maximize', ()=>{
+        mainWindow.webContents.send('isMaximized');
+        console.log("sent is maximized.");
+    })
+
+    mainWindow.on('unmaximize', ()=>{
+        mainWindow.webContents.send('isRestored');
+        console.log("sent is restored.");
+
+    })
+
+    // Open devtools if in dev env
     if (isDev) {
         mainWindow.webContents.openDevTools();
     }
     mainWindow.loadFile(path.join(__dirname, './renderer/mainWindow.html'));
 
-    // CLOSE APP
-    ipc.on('closeApp', ()=> {
-        mainWindow.close();
-    })
 
-    // MINIMIZE APP
-    ipc.on('minimizeApp', ()=> {
-        mainWindow.minimize();
-    })
-
-    mainWindow.on('maximize', ()=>{
-        mainWindow.webContents.send('isMaximized');
-    })
-
-    mainWindow.on('unmaximize', ()=>{
-        mainWindow.webContents.send('isRestored')
-    })
-
-    // MAXIMIZE APP
-    ipc.on('maximizeRestoreApp', ()=> {
-        if (mainWindow.isMaximized()) {
-            mainWindow.restore();
-        }
-        else {
-            mainWindow.maximize();
-        }
-    })
 }
 
 // App is ready
@@ -84,3 +85,5 @@ app.on('window-all-closed', () => {
         app.quit();
     }
 });
+
+

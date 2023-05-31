@@ -1,3 +1,56 @@
+const minimizeBtn = document.getElementById('minimizeBtn');
+const closeBtn = document.getElementById('closeBtn');
+const maxResBtn = document.getElementById('maxResBtn');
+
+minimizeBtn.addEventListener('click', ()=> {
+    window.electronAPI.minimize();
+});
+
+closeBtn.addEventListener('click', ()=> {
+    window.electronAPI.close();
+});
+
+maxResBtn.addEventListener('click', ()=> {
+    window.electronAPI.maximizeRestore();
+});
+
+function changeMaxResBtn(isMaximizedApp) {
+    if (isMaximizedApp) {
+        maxResBtn.title = 'Restore';
+        maxResBtn.classList.remove('maximizeBtn');
+        maxResBtn.classList.add('restoreBtn');
+        const fontAwesomeIcon = document.getElementById('fontIconMaxResBtn');
+        fontAwesomeIcon.classList.remove('fa-square');
+        fontAwesomeIcon.classList.remove('fa-xl');
+        fontAwesomeIcon.classList.toggle('fa-window-restore');
+        fontAwesomeIcon.classList.toggle('fa-xl');
+    }
+    else {
+        maxResBtn.title = 'Maximize';
+        maxResBtn.classList.remove('restoreBtn');
+        maxResBtn.classList.add('maximizeBtn');
+        const fontAwesomeIcon = document.getElementById('fontIconMaxResBtn');
+        fontAwesomeIcon.classList.toggle('fa-square');
+        fontAwesomeIcon.classList.remove('fa-window-restore');
+    }
+}
+
+// window.electronAPI.isMaximized( () => {
+//     changeMaxResBtn(true);
+// });
+//
+// window.electronAPI.isRestored( () => {
+//     changeMaxResBtn(false);
+// });
+
+// ipc.on('isMaximized', ()=>{
+//     changeMaxResBtn(true);
+// });
+//
+// ipc.on('isRestored', ()=>{
+//     changeMaxResBtn(false);
+// });
+
 window.onload = displayClock();
 const minutes_in_seconds_25 = 10;
 const minutes_in_seconds_50 = 3000;
@@ -7,10 +60,11 @@ let date = new Date().toDateString();
 document.getElementById('date').innerHTML = date;
 let time = new Date().toLocaleTimeString();
 
+
 function displayClock() {
     let time = new Date().toLocaleTimeString();
     document.getElementById('time').innerHTML = time;
-    setTimeout(displayClock, 1000)
+    setTimeout(displayClock, 1000);
 }
 
 if (time.charAt(time.length-2) === 'P') {
@@ -24,10 +78,12 @@ if (time.charAt(time.length-2) === 'P') {
 }
 else {
     document.getElementById('greeting').innerHTML = "Good Morning, ";
+    $("#test").html("Hello, World!");
 }
 
 const button25Minutes = document.getElementById("25_minute_button");
 const button50Minutes = document.getElementById("50_minute_button");
+
 button25Minutes.onclick = ()=> {
     switchButtons();
     progress(minutes_in_seconds_25, minutes_in_seconds_25, $('#progressBar'));
@@ -68,25 +124,6 @@ function progress(timeleft, timetotal, $element) {
         }, 1000);
     }
     else {
-
-        // connect to DB
-        /*mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: '102992',
-            database: 'pomodoro_timer'
-        });
-
-        const func = async () => {
-            const response = await window.mysql.ping();
-            console.log(response);
-        }
-
-        func();
-
-        // mysql.connect();
-        console.log("Successfully connected to database.");*/
-
         let soundPlayer = new Audio("./sounds/alarm.mp3")
         soundPlayer.currentTime = 0;
         const intervalId = setInterval(()=> {
@@ -109,7 +146,7 @@ function progress(timeleft, timetotal, $element) {
                 setBackToMain();
             }
         }
-        // 10 minute break or 5 minute break ended
+        // 10-minute break or 5-minute break ended
         else if(timetotal === minutes_in_seconds_10 || timetotal === minutes_in_seconds_5) {
             breakEnded();
             document.getElementById('study_again_button').onclick = ()=> {
@@ -123,7 +160,7 @@ function progress(timeleft, timetotal, $element) {
                 setBackToMain();
             }
         }
-        // We are in 50 minute study session
+        // We are in 50-minute study session
         else {
             studySessionEnded();
             document.getElementById('10_minute_break_button').style.display = 'inline';
@@ -142,7 +179,7 @@ function progress(timeleft, timetotal, $element) {
             }
         }
     }
-};
+}
 
 function studySessionEnded() {
     document.getElementById('label2').style.display = "inline";
@@ -199,9 +236,5 @@ function setBackToMain() {
     document.getElementById('study_again_button').style.display = 'none';
     document.getElementById('label3').style.display = 'none';
 }
-
-
-
-
 
 
