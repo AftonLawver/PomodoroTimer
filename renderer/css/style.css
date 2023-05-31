@@ -54,6 +54,10 @@ html, body {
     background-color: #4F9FEE;
 }
 
+#logo {
+    padding-left: 4px;
+}
+
 .titleBar > .title {
     margin-left: 10px;
     width: 100%;
@@ -81,7 +85,6 @@ html, body {
     transition: 0.2s;
     cursor: pointer;
     color: #949AA7;
-
 }
 
 .titleBarBtns > .topBtn:hover {
@@ -112,7 +115,7 @@ body > .contentArea {
 }
 
 .greeting_and_date {
-    padding-top: 2%;
+    padding-top: 5%;
     text-align: center;
 }
 

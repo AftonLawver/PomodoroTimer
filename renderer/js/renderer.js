@@ -35,26 +35,18 @@ function changeMaxResBtn(isMaximizedApp) {
     }
 }
 
-// window.electronAPI.isMaximized( () => {
-//     changeMaxResBtn(true);
-// });
-//
-// window.electronAPI.isRestored( () => {
-//     changeMaxResBtn(false);
-// });
+window.electronAPI.isMaximized(() => {
+    changeMaxResBtn(true);
+})
 
-// ipc.on('isMaximized', ()=>{
-//     changeMaxResBtn(true);
-// });
-//
-// ipc.on('isRestored', ()=>{
-//     changeMaxResBtn(false);
-// });
+window.electronAPI.isRestored(() => {
+    changeMaxResBtn(false);
+})
 
 window.onload = displayClock();
-const minutes_in_seconds_25 = 10;
+const minutes_in_seconds_25 = 1500;
 const minutes_in_seconds_50 = 3000;
-const minutes_in_seconds_5 = 5;
+const minutes_in_seconds_5 = 300;
 const minutes_in_seconds_10 = 600;
 let date = new Date().toDateString();
 document.getElementById('date').innerHTML = date;

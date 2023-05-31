@@ -5,7 +5,7 @@ const path = require('path')
 
 // process.env.NODE_ENV = 'production';
 
-const isDev = process.env.NODE_ENV !== 'production';
+const isDev = process.env.NODE_ENV === 'production';
 const isMac = process.platform === 'darwin';
 
 function createMainWindow() {
@@ -13,11 +13,12 @@ function createMainWindow() {
         title: 'Pomodoro Timer',
         width: isDev ? 600 : 400,
         // width: 450,
-        height: 350,
-        // minHeight: 350,
-        // maxHeight: 350,
-        // minWidth: 450,
-        // maxWidth: 450,
+        height: 300,
+        minHeight: 250,
+        // maxHeight: 450,
+        minWidth: 450,
+        // maxWidth: 550,
+        icon: 'assets/icons/png/icon.png',
         frame: false,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
@@ -50,12 +51,12 @@ function createMainWindow() {
 
     mainWindow.on('maximize', ()=>{
         mainWindow.webContents.send('isMaximized');
-        console.log("sent is maximized.");
+        console.log("sent is maximized to the renderer process.");
     })
 
     mainWindow.on('unmaximize', ()=>{
         mainWindow.webContents.send('isRestored');
-        console.log("sent is restored.");
+        console.log("sent is restored to the renderer process..");
 
     })
 
@@ -64,8 +65,6 @@ function createMainWindow() {
         mainWindow.webContents.openDevTools();
     }
     mainWindow.loadFile(path.join(__dirname, './renderer/mainWindow.html'));
-
-
 }
 
 // App is ready
