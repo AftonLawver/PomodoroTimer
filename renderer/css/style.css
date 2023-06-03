@@ -133,17 +133,17 @@ html, body {
     color: var(--text-color);
     font-size: 12px;
     background: transparent;
-    padding: 25px 0px 10px 0px;
+    padding: 5vh 0 3vh 0;
     display: block;
     border: none;
     margin:0 auto;
     display:block;
-
     /*border: 1px solid var(--text-color);*/
     /*border-radius: 3px;*/
 }
 
-#userButton, #metricsButton {
+
+#userButton, #metricsButton, #modeButton {
     font-size: 2.5vw;
 }
 

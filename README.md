@@ -30,8 +30,7 @@ Add some text to explain installation
 **Features in Progress**
 ---
 
-1. Getting functionality of the menu bar so the user can update/modify settings, like filepath 
-for saving their data of studied time.
+1. Making a button that can turn the app from dark mode to light mode.
 2. Creating a first popup window that asks the user their name and email address, so that they can save their
 data to their profile. 
 3. Creating a database with different tables to hold all of the apps information.

@@ -2,7 +2,8 @@ const minimizeBtn = document.getElementById('minimizeBtn');
 const closeBtn = document.getElementById('closeBtn');
 const maxResBtn = document.getElementById('maxResBtn');
 let isLeftMenuActive = false;
-const mySideBar = document.getElementById('mySideBar')
+const mySideBar = document.getElementById('mySideBar');
+let isModeButtonActive = true;
 minimizeBtn.addEventListener('click', ()=> {
     window.electronAPI.minimize();
 });
@@ -56,6 +57,27 @@ showHideMenus.addEventListener('click', ()=> {
         mySideBar.style.width = '30%';
         mySideBar.style.display = 'inline';
         isLeftMenuActive = true;
+    }
+})
+
+const modeButton = document.getElementById('modeButton');
+const fontIconModeButton = document.getElementById('fontIconModeBtn');
+
+modeButton.addEventListener('click', ()=> {
+    if(isModeButtonActive) {
+        isModeButtonActive = false;
+        fontIconModeButton.classList.remove('fa-toggle-on');
+        fontIconModeButton.classList.add('fa-toggle-off');
+    }
+    else {
+        console.log('Before changing classList');
+        console.log(fontIconModeButton.classList);
+        isModeButtonActive = true;
+        fontIconModeButton.classList.remove('fa-toggle-off');
+        fontIconModeButton.classList.add('fa-toggle-on');
+        console.log('After changing classList');
+        console.log(fontIconModeButton.classList);
+
     }
 })
 
