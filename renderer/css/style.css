@@ -1,10 +1,23 @@
+
+
+
+:root {
+    /* ===== Colors ===== */
+    --body-color: #2C313C;
+    --text-color: #949AA7;
+    --background-color: #272C36;
+
+}
+
+
 html, body {
     margin:0;
     padding: 0;
     font-family: 'JetBrains Mono';
     font-size: 16px;
-    color: #949AA7;
-    background-color: #2C313C;
+    background-color: var(--body-color);
+    color: var(--text-color);
+    height: 100%;
 }
 
 .mainApp {
@@ -14,7 +27,6 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    padding-bottom: 3%;
     -webkit-box-sizing: border-box;
 }
 
@@ -47,7 +59,7 @@ html, body {
 }
 
 .titleBar > .toggleButton:hover{
-    background-color: #272C36;
+    background-color: var(--background-color);
 }
 
 .titleBar > .toggleButton:active{
@@ -56,6 +68,8 @@ html, body {
 
 #logo {
     padding-left: 4px;
+    width: 22px;
+    height: 22px;
 }
 
 .titleBar > .title {
@@ -88,21 +102,62 @@ html, body {
 }
 
 .titleBarBtns > .topBtn:hover {
-    background-color: #272C36;
+    background-color: var(--background-color);
 }
 
 .titleBarBtns > .minimizeBtn {
     padding-bottom: 13px;
 }
 
-body > .contentArea {
+.mainApp > .contentArea {
     display: flex;
     flex-direction: row;
-    width: 100%;
     height: 100%;
 }
 
-.contentArea > .contentPages {
+.mainApp > .contentArea > .leftMenu {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: var(--background-color);
+    display: none;
+}
+
+#mySideBar {
+    width: 10% !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.leftMenu > button {
+    color: var(--text-color);
+    font-size: 12px;
+    background: transparent;
+    padding: 25px 0px 10px 0px;
+    display: block;
+    border: none;
+    margin:0 auto;
+    display:block;
+
+    /*border: 1px solid var(--text-color);*/
+    /*border-radius: 3px;*/
+}
+
+#userButton, #metricsButton {
+    font-size: 2.5vw;
+}
+
+.sidebarButtons {
+    justify-content: center;
+}
+
+.leftMenu > button:hover {
+    cursor: pointer;
+    color: #f8cc1d;
+    /*border-color: #f8cc1d;*/
+}
+
+.mainApp > .contentArea > .contentPages {
     width: 100%;
     height: 100%;
     -webkit-box-align: center;
@@ -170,7 +225,6 @@ body > .contentArea {
     transform: translateY(0);
     transition-duration: .35s;
     box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
-
 }
 
 .time_button:active, .control_button:active, .break_button:active, .start_session {
@@ -194,6 +248,7 @@ body > .contentArea {
     width: 0;
     background-color: #ffd433;
     box-sizing: border-box;
+    color: black;
 }
 
 .control_button, .break_button {

@@ -1,7 +1,8 @@
 const minimizeBtn = document.getElementById('minimizeBtn');
 const closeBtn = document.getElementById('closeBtn');
 const maxResBtn = document.getElementById('maxResBtn');
-
+let isLeftMenuActive = false;
+const mySideBar = document.getElementById('mySideBar')
 minimizeBtn.addEventListener('click', ()=> {
     window.electronAPI.minimize();
 });
@@ -41,6 +42,21 @@ window.electronAPI.isMaximized(() => {
 
 window.electronAPI.isRestored(() => {
     changeMaxResBtn(false);
+})
+
+// TOGGLE BUTTON
+// Expand and Retract
+const showHideMenus = document.getElementById('showHideMenus');
+showHideMenus.addEventListener('click', ()=> {
+    if(isLeftMenuActive) {
+        isLeftMenuActive = false;
+        mySideBar.style.display = 'none';
+    }
+    else {
+        mySideBar.style.width = '30%';
+        mySideBar.style.display = 'inline';
+        isLeftMenuActive = true;
+    }
 })
 
 window.onload = displayClock();
@@ -228,5 +244,6 @@ function setBackToMain() {
     document.getElementById('study_again_button').style.display = 'none';
     document.getElementById('label3').style.display = 'none';
 }
+
 
 
