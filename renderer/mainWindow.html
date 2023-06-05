@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' "/>
@@ -15,15 +15,15 @@
 </head>
 <body>
     <div class="mainApp">
-        <div class="topBar">
+        <div id="topBar" class="topBar">
             <div class="titleBar">
-                <button id="showHideMenus" class="toggleButton"><i class="fa-solid fa-bars fa-xl"></i></button>
+                <button id="showHideMenus" class="toggleButton"><i id="toggleButton" class="fa-solid fa-bars fa-xl"></i></button>
                 <img id="logo" src="../assets/icons/png/icon.png">
-                <div class="title">
+                <div id="title" class="title">
                     Pomodoro Timer
                 </div>
             </div>
-            <div class="titleBarBtns">
+            <div id="titleBarBtns" class="titleBarBtns">
                 <button id="minimizeBtn" class="topBtn minimizeBtn" title="Minimize"><i class="fa-solid fa-window-minimize fa-xl"></i></button>
                 <button id="maxResBtn" class="topBtn maximizeBtn" title="Maximize"><i id="fontIconMaxResBtn" class="fa-regular fa-square fa-xl"></i></button>
                 <button id="closeBtn" class="topBtn closeBtn" title="Close"><i class="fa-solid fa-xmark fa-xl"></i></button>
@@ -34,9 +34,8 @@
                 <button id="userButton" class="sidebarButtons" title="userButton"><i class="fa-regular fa-user fa-2xl"></i></button>
                 <button id="metricsButton" class="sidebarButtons" title="metricsButton"><i class="fa-solid fa-chart-simple fa-2xl"></i></button>
                 <button id="modeButton" class="sidebarButtons" title="modeButton"><i id="fontIconModeBtn" class="fa-solid fa-toggle-on fa-2xl"></i></i></button>
-
             </div>
-            <div class="contentPages">
+            <div id="contentPages" class="contentPages">
                 <div class="greeting_and_date">
                     <span id="greeting"></span>
                     <span id="name">Afton.</span>

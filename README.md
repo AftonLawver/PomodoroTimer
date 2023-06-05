@@ -30,7 +30,7 @@ Add some text to explain installation
 **Features in Progress**
 ---
 
-1. Making a button that can turn the app from dark mode to light mode.
-2. Creating a first popup window that asks the user their name and email address, so that they can save their
-data to their profile. 
+1. Implement light and dark mode into the toggle mode button.
+2. When the user clicks light/dark mode, and exits the app, let the setting maintain its value. 
+2. Create a first popup window that asks the user their name and then sets the main window to say their name.
 3. Creating a database with different tables to hold all of the apps information.

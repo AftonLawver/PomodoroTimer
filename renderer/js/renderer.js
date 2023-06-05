@@ -64,20 +64,20 @@ const modeButton = document.getElementById('modeButton');
 const fontIconModeButton = document.getElementById('fontIconModeBtn');
 
 modeButton.addEventListener('click', ()=> {
+    // Light mode
     if(isModeButtonActive) {
         isModeButtonActive = false;
         fontIconModeButton.classList.remove('fa-toggle-on');
         fontIconModeButton.classList.add('fa-toggle-off');
+        toggleMode();
+
     }
+    // Dark mode
     else {
-        console.log('Before changing classList');
-        console.log(fontIconModeButton.classList);
         isModeButtonActive = true;
         fontIconModeButton.classList.remove('fa-toggle-off');
         fontIconModeButton.classList.add('fa-toggle-on');
-        console.log('After changing classList');
-        console.log(fontIconModeButton.classList);
-
+        toggleMode();
     }
 })
 
@@ -267,5 +267,64 @@ function setBackToMain() {
     document.getElementById('label3').style.display = 'none';
 }
 
+function toggleMode() {
+
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const topBar = document.getElementById('topBar');
+    topBar.classList.toggle('dark-mode');
+    const toggleButton = document.getElementById('showHideMenus');
+    toggleButton.classList.toggle('dark-mode');
+    const titleBarBtns = document.getElementsByClassName('topBtn');
+    for (let i = 0; i < titleBarBtns.length; i++) {
+        titleBarBtns[i].classList.toggle("dark-mode");
+    }
+
+    const leftMenu = document.getElementById('mySideBar');
+    leftMenu.classList.toggle('dark-mode');
+
+    const sidebarButtons = document.getElementsByClassName('sidebarButtons');
+    for (let i = 0; i < sidebarButtons.length; i++) {
+        sidebarButtons[i].classList.toggle("dark-mode");
+    }
+
+
+
+
+
+    // const toggleButton = document.getElementById("toggleButton");
+    // const minimizeBtn = document.getElementById("minimizeBtn");
+    // const maxResBtn = document.getElementById("maxResBtn");
+    // const closeBtn = document.getElementById("closeBtn");
+    // const userButton = document.getElementById("userButton");
+    // const metricsButton = document.getElementById("metricsButton");
+    // const modeButton = document.getElementById("modeButton");
+    // const sideBar = document.getElementById("mySideBar");
+    // const topBar = document.getElementById("topBar");
+    //
+    //
+    // const mainArea =  document.getElementById('contentPages');
+    // document.body.style.color = '#272C36';
+    // toggleButton.style.color = '#272C36';
+    // minimizeBtn.style.color = '#272C36';
+    // maxResBtn.style.color = '#272C36';
+    // closeBtn.style.color = '#272C36';
+    // userButton.style.color = '#272C36';
+    // metricsButton.style.color = '#272C36';
+    // modeButton.style.color = '#272C36';
+    // userButton.style.color = '#272C36';
+    // topBar.style.backgroundColor = "#555555";
+    // topBar.style.borderBottom = '3px solid #888888';
+    // sideBar.style.backgroundColor = '#666666';
+    // mainArea.style.backgroundColor = '#777777'
+
+    // set all hover effects
+
+
+
+
+
+
+}
 
 
