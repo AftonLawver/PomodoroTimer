@@ -66,6 +66,10 @@ function createMainWindow() {
         mainWindow.webContents.openDevTools();
     }
     mainWindow.loadFile(path.join(__dirname, './renderer/mainWindow.html'));
+
+    mainWindow.once('ready-to-show', ()=> {
+        mainWindow.show();
+    })
 }
 
 // App is ready
