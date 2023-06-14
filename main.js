@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 const isMac = process.platform === 'darwin';
 
 function createMainWindow() {
-    const mainWindow = new BrowserWindow({
+    let mainWindow = new BrowserWindow({
         title: 'Pomodoro Timer',
         width: isDev ? 600 : 400,
         // width: 450,
@@ -35,6 +35,7 @@ function createMainWindow() {
     // CLOSE APP
     ipcMain.on('close', ()=> {
         mainWindow.close();
+        mainWindow = null;
     })
 
     // MAXIMIZE APP
