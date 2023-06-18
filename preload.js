@@ -6,6 +6,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     close: () => ipcRenderer.send('close'),
     isMaximized: (callback) => ipcRenderer.on('isMaximized', callback),
     isRestored: (callback) => ipcRenderer.on('isRestored', callback),
+
+    openMainWindow: ()=> ipcRenderer.send('openMainWindow'),
+
+    openSettingsWindow: () => ipcRenderer.send('openSettingsWindow'),
 })
 
 

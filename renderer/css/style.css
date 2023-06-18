@@ -177,7 +177,7 @@ html, body {
     padding-bottom: 2%;
 }
 
-.time_button, .control_button, .break_button, .start_session {
+.time_button, .control_button, .break_button, .start_session, #loginButton {
     appearance: none;
     backface-visibility: hidden;
     background-color: #f8cc1d;
@@ -208,13 +208,13 @@ html, body {
     white-space: nowrap;
 }
 
-.time_button:hover, .control_button:hover, .break_button:hover, .start_session {
+.time_button:hover, .control_button:hover, .break_button:hover, .start_session, #loginButton:hover {
     background-color: #f8d655;
     opacity: 1;
     transition-duration: .35s;
 }
 
-.time_button:active, .control_button:active, .break_button:active, .start_session {
+.time_button:active, .control_button:active, .break_button:active, .start_session, #loginButton:active {
     transform: translateY(2px);
     transition-duration: .35s;
 }
@@ -285,10 +285,12 @@ body.dark-mode {
     color: var(--background-color);
 }
 
+.login {
+    margin: auto;
+}
 
-
-
-
-
+.filepath {
+    display: block;
+}
 
 

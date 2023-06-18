@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' "/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="js/settingsRenderer.js" defer></script>
+</head>
+<body>
+<div class="mainApp">
+    <div id="topBar" class="topBar">
+        <div class="titleBar">
+            <img id="logo" src="../assets/icons/png/icon.png">
+            <div id="title" class="title">
+                User Settings
+            </div>
+        </div>
+        <div id="titleBarBtns" class="titleBarBtns">
+            <button id="minimizeBtn" class="topBtn minimizeBtn" title="Minimize"><i class="fa-solid fa-window-minimize fa-xl"></i></button>
+            <button id="maxResBtn" class="topBtn maximizeBtn" title="Maximize"><i id="fontIconMaxResBtn" class="fa-regular fa-square fa-xl"></i></button>
+            <button id="closeBtn" class="topBtn closeBtn" title="Close"><i class="fa-solid fa-xmark fa-xl"></i></button>
+        </div>
+    </div>
+    <div class="contentArea">
+        <div class="name">
+            <h4>Current name: </h4>
+            <label id="firstnameLabel" for="firstname">New name:</label>
+            <input type="text" id="firstname" name="firstname" autofocus required>
+            <button id="changeName">Change name</button>
+        </div>
+        <div class="filepath">
+            <label id="filepathLabel" for="filepath">Filepath:</label>
+            <input type="text" id="filepath" name="filepath" autofocus required>
+            <button id="chooseFile" class="chooseFile" title="chooseFile"><i class="fa-solid fa-folder-open"></i></button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

@@ -48,7 +48,7 @@ window.electronAPI.isRestored(() => {
 // TOGGLE BUTTON
 // Expand and Retract
 const showHideMenus = document.getElementById('showHideMenus');
-showHideMenus.addEventListener('click', ()=> {
+document.getElementById('showHideMenus')?.addEventListener('click', ()=> {
     if(isLeftMenuActive) {
         isLeftMenuActive = false;
         mySideBar.style.display = 'none';
@@ -63,7 +63,7 @@ showHideMenus.addEventListener('click', ()=> {
 const modeButton = document.getElementById('modeButton');
 const fontIconModeButton = document.getElementById('fontIconModeBtn');
 
-modeButton.addEventListener('click', ()=> {
+document.getElementById('modeButton')?.addEventListener('click', ()=> {
     // Light mode
     if(isModeButtonActive) {
         isModeButtonActive = false;
@@ -80,8 +80,10 @@ modeButton.addEventListener('click', ()=> {
         toggleMode();
     }
 })
+if (document.body.contains(document.getElementById('time'))) {
+    window.onload = displayClock();
 
-window.onload = displayClock();
+}
 const minutes_in_seconds_25 = 1500;
 const minutes_in_seconds_50 = 3000;
 const minutes_in_seconds_5 = 300;
@@ -268,7 +270,6 @@ function setBackToMain() {
 }
 
 function toggleMode() {
-
     const body = document.body;
     body.classList.toggle('dark-mode');
     const topBar = document.getElementById('topBar');
@@ -287,44 +288,19 @@ function toggleMode() {
     for (let i = 0; i < sidebarButtons.length; i++) {
         sidebarButtons[i].classList.toggle("dark-mode");
     }
-
-
-
-
-
-    // const toggleButton = document.getElementById("toggleButton");
-    // const minimizeBtn = document.getElementById("minimizeBtn");
-    // const maxResBtn = document.getElementById("maxResBtn");
-    // const closeBtn = document.getElementById("closeBtn");
-    // const userButton = document.getElementById("userButton");
-    // const metricsButton = document.getElementById("metricsButton");
-    // const modeButton = document.getElementById("modeButton");
-    // const sideBar = document.getElementById("mySideBar");
-    // const topBar = document.getElementById("topBar");
-    //
-    //
-    // const mainArea =  document.getElementById('contentPages');
-    // document.body.style.color = '#272C36';
-    // toggleButton.style.color = '#272C36';
-    // minimizeBtn.style.color = '#272C36';
-    // maxResBtn.style.color = '#272C36';
-    // closeBtn.style.color = '#272C36';
-    // userButton.style.color = '#272C36';
-    // metricsButton.style.color = '#272C36';
-    // modeButton.style.color = '#272C36';
-    // userButton.style.color = '#272C36';
-    // topBar.style.backgroundColor = "#555555";
-    // topBar.style.borderBottom = '3px solid #888888';
-    // sideBar.style.backgroundColor = '#666666';
-    // mainArea.style.backgroundColor = '#777777'
-
-    // set all hover effects
-
-
-
-
-
-
 }
+const settingsButton = document.querySelector('#userButton');
+settingsButton.addEventListener('click', () => {
+    console.log('settings button clicked.');
+    window.electronAPI.openSettingsWindow();
+})
+
+// const loginButton = document.getElementById("loginButton");
+// loginButton.addEventListener('click', ()=>{
+//     let input = document.getElementById("firstname").innerText;
+//     // send input to the main process
+//     console.log("in login button click.")
+//     window.electronAPI.openMainWindow();
+// })
 
 
