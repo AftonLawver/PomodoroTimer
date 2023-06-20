@@ -5,7 +5,7 @@ const path = require('path')
 
 // process.env.NODE_ENV = 'production';
 
-const isDev = process.env.NODE_ENV !== 'production';
+const isDev = process.env.NODE_ENV === 'production';
 const isMac = process.platform === 'darwin';
 
 let mainWindow;
